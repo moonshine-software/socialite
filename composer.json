@@ -1,0 +1,58 @@
+{
+  "name": "moonshine/socialite",
+  "description": "Socialite support for MoonShine",
+  "keywords": ["laravel", "socialite", "admin", "dashboard", "moonshine"],
+  "type": "library",
+  "homepage": "https://moonshine-laravel.com",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/moonshine-software/socialite/issues",
+    "source": "https://github.com/moonshine-software/socialite"
+  },
+  "authors": [
+    {
+      "name": "Danil Shutsky",
+      "email": "info@cutcode.ru",
+      "homepage": "https://cutcode.dev"
+    }
+  ],
+  "require": {
+    "php": "^8.2|^8.3",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "MoonShine\\Socialite\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+
+    }
+  },
+  "suggest": {
+    "laravel/socialite": "Required to use the Socialite"
+  },
+  "conflict": {
+    "laravel/framework": "<10.48.0",
+    "moonshine/moonshine": "<3.0"
+  },
+  "scripts": {
+
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+          "MoonShine\\Socialite\\Providers\\SocialiteServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+
+    }
+  }
+}
