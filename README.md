@@ -1,6 +1,6 @@
 # MoonShine Socialite
 
-[Documentation](https:://moonshine-laravel.com/docs/3.x/security/socialite)
+[Documentation](https://moonshine-laravel.com/docs/3.x/security/authentication#socialite)
 
 ## Requirements
 
