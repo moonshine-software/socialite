@@ -8,7 +8,7 @@ use Laravel\Socialite\Contracts\User;
 use Laravel\Socialite\Facades\Socialite;
 
 use Illuminate\Http\RedirectResponse;
-use MoonShine\Laravel\Exceptions\AuthException;
+use MoonShine\Socialite\Exceptions\AuthException;
 use MoonShine\Laravel\Http\Controllers\MoonShineController;
 use MoonShine\Laravel\Pages\ProfilePage;
 use MoonShine\Support\Enums\ToastType;
@@ -19,30 +19,26 @@ class SocialiteController extends MoonShineController
 {
     /**
      * @throws AuthException
-     * @throws Exception
      */
     public function redirect(string $driver)
     {
         $this->ensureSocialiteIsInstalled();
 
         if (! $this->hasDriver($driver)) {
-            throw new AuthException('Driver not found in config file');
+            throw AuthException::driverNotFound();
         }
 
         return Socialite::driver($driver)
             ->redirect();
     }
 
-    /**
-     * @throws Exception
-     */
     protected function ensureSocialiteIsInstalled(): void
     {
         if (class_exists(Socialite::class)) {
             return;
         }
 
-        throw new RuntimeException(
+        throw new \RuntimeException(
             'Please install the Socialite: laravel/socialite'
         );
     }
@@ -59,14 +55,13 @@ class SocialiteController extends MoonShineController
 
     /**
      * @throws AuthException
-     * @throws Exception
      */
     public function callback(string $driver): RedirectResponse
     {
         $this->ensureSocialiteIsInstalled();
 
         if (! $this->hasDriver($driver)) {
-            throw new AuthException('Driver not found in config file');
+            throw AuthException::driverNotFound();
         }
 
         $socialiteUser = Socialite::driver($driver)->user();
