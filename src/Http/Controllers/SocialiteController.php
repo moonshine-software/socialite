@@ -50,7 +50,7 @@ class SocialiteController extends MoonShineController
 
     protected function drivers(): array
     {
-        return config('socialite.drivers', []);
+        return config('moonshine-socialite.drivers', []);
     }
 
     /**
